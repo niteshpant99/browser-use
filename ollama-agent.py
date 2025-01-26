@@ -10,10 +10,10 @@ from browser_use.agent.views import AgentHistoryList
 llm=ChatOllama(model="qwen2.5", num_ctx=32000)
 
 # Create agent with the model
-agent = Agent(
-    task="Your task here",
-    llm=llm
-)
+# agent = Agent(
+#     task="Your task here",
+#     llm=llm
+# )
 
 # import os
 
@@ -25,7 +25,11 @@ agent = Agent(
 
 async def run_search() -> AgentHistoryList:
     agent = Agent(
-        task="Search for a 'browser use' post on the r/LocalLLaMA subreddit and open it.",
+        task="""
+        Search on google.com for 'New York  site:https://jobs.ashbyhq.com/' 
+        Then, click on tools and set the date to 'Past week'
+        For each job listing that matches my profile, open the job on a new tab
+        """,
         llm=ChatOllama(
             model="qwen2.5:32b-instruct-q4_K_M",
             num_ctx=32000,
